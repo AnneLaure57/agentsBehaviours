@@ -20,7 +20,7 @@ Sous la licence MIT.
 
 si vous rencontrez des soucis de fontionnement, rendez-vous sur le lien suivant :
 
-* [url] (https://gist.github.com/gyassine/a6689d1d7b5332da561f73401917d605#configuration-de-eclipse)
+* [url](https://gist.github.com/gyassine/a6689d1d7b5332da561f73401917d605#configuration-de-eclipse)
 
 
 
