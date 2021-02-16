@@ -20,7 +20,8 @@ public class MovieSellerAgent extends Agent{
 		catalogue = new Hashtable();
 		 
 		Object[] args = getArguments();
-		service = (String) args[0];
+		//service = (String) args[0];
+		service = "vente";
 		System.out.println("Salut, je suis l'agent distributeur "+this.getLocalName());
 		this.registerService();
 		

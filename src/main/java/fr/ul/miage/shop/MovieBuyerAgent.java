@@ -55,7 +55,7 @@ public class MovieBuyerAgent  extends Agent{
 		 else {
 			 // Make the agent terminate immediately
 			 System.out.println("Are U drunk ? Pas de film correspondant." );
-			 doDelete();
+			 //doDelete();
 		 }
 	 }
 	 // Put agent clean-up operations here
