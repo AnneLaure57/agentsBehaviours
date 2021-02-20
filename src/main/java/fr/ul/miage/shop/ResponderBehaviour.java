@@ -1,6 +1,5 @@
 package fr.ul.miage.shop;
 
-import jade.core.behaviours.TickerBehaviour;
 //import java.util.List;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
@@ -19,7 +18,8 @@ public class ResponderBehaviour extends SimpleBehaviour {
 	public void action() {
 	  while (true) {
 	    ACLMessage aclMessage = myAgent.receive(mt);
-	    if (aclMessage != null) {
+	    System.out.println(aclMessage);
+    	if (aclMessage != null) {
 	      try {
 	        String message = aclMessage.getContent();
 	        System.out.println(myAgent.getLocalName() + ": I receive message\n" +

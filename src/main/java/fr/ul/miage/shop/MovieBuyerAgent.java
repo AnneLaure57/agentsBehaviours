@@ -7,6 +7,7 @@ import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.lang.acl.ACLMessage;
 
 public class MovieBuyerAgent  extends Agent{
 	 // The title of the movie to buy
@@ -28,7 +29,7 @@ public class MovieBuyerAgent  extends Agent{
 			movieTitle = (String) args[0];
 			System.out.println("Je recherche "+ movieTitle);
 			
-			addBehaviour(new TickerBehaviour(this, 60000) {
+			addBehaviour(new TickerBehaviour(this, 10000) {
 				protected void onTick() {
 					// Update the list of seller agents
 					DFAgentDescription template = new DFAgentDescription();
@@ -41,14 +42,15 @@ public class MovieBuyerAgent  extends Agent{
 						sellerAgents = new AID[result.length];
 						for (int i = 0; i < result.length; ++i) {
 							sellerAgents[i] = result[i].getName();
+							System.out.println(result[i].getName());
+							sendMessage(movieTitle, result[i].getName());
 						}
 					}
 					catch (FIPAException fe) {
 						fe.printStackTrace();
 					}
 					// Perform the request
-					//myAgent : protected variable 
-					myAgent.addBehaviour(new ResponderBehaviour(myAgent));
+					//myAgent : protected variable -> renvoie à l'agent concerné qui correspond à l'agent Distributeur
 				}
 			} );
 		 }
@@ -58,6 +60,21 @@ public class MovieBuyerAgent  extends Agent{
 			 //doDelete();
 		 }
 	 }
+	 
+	 private void sendMessage(String mess, AID id) {
+	        try {
+	        	System.out.println("id : " + id);
+	            ACLMessage aclMessage = new ACLMessage(ACLMessage.REQUEST);
+	            aclMessage.addReceiver(id);
+
+	            aclMessage.setContent(mess);
+	            
+	            this.send(aclMessage);
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	 
 	 // Put agent clean-up operations here
 	 protected void takeDown() {
 		 // Printout a dismissal message

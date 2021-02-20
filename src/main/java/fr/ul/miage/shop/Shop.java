@@ -19,9 +19,9 @@ public class Shop {
        AgentController agentController01,agentController02;
        
        try {
-    	   agentController01 = containerController.createNewAgent("Sender", "fr.ul.miage.shop.MovieBuyerAgent", null);
+    	   agentController01 = containerController.createNewAgent("Internaute", "fr.ul.miage.shop.MovieBuyerAgent", new Object[] {"Lord of rings"});
     	   agentController01.start();
-    	   agentController02 = containerController.createNewAgent("Receiver", "fr.ul.miage.shop.MovieSellerAgent", null);
+    	   agentController02 = containerController.createNewAgent("Distributeur", "fr.ul.miage.shop.MovieSellerAgent", new Object[] {"vente"});
     	   agentController02.start();
        	} catch (StaleProxyException e) {
             e.printStackTrace();
